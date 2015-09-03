@@ -4,7 +4,7 @@ module ActiveMultipleDb
   # +ActiveRecord::Migration+.
   # See: https://github.com/rails/rails/pull/21353 and
   # https://github.com/rails/rails/blob/v4.2.1/activerecord/lib/active_record/migration.rb
-  if ActiveRecord::VERSION::STRING == '4.2.1'
+  if ActiveRecord::VERSION::STRING >= '4.2.1'
     module ActiveRecordMigrationExtension
       # Override +migrate+ method
       def migrate(direction)
