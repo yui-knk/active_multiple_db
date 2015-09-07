@@ -18,8 +18,9 @@ module ActiveMultipleDb
       end
 
       def set_table_name_to_db2
-        db = self.connection_pool.spec.config[:database]
-        self.table_name = "#{db}2.#{@before_table_name_set_to_db1}"
+        spec_name = "#{Rails.env}2"
+        db = self.configurations[spec_name]["database"]
+        self.table_name = "#{db}.#{@before_table_name_set_to_db1}"
       end
     end
   end
