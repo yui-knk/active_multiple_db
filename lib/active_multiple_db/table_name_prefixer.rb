@@ -8,7 +8,7 @@ module ActiveMultipleDb
       def inherited(kls)
         super
         # and not abstruct?
-        kls.set_table_name_to_db1 if (kls != ::ActiveRecord::Base) && (kls.parent != ActsAsTaggableOn)
+        kls.set_table_name_to_db1 if (kls != ::ActiveRecord::Base) && (kls.descends_from_active_record?) && (kls.parent != ActsAsTaggableOn)
       end
 
       def set_table_name_to_db1
