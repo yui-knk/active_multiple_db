@@ -48,7 +48,7 @@ module ActiveMultipleDb
 
       module ClassMethods
         def safely_yield
-          if Rails.env.development? || Rails.env.test?
+          if ActiveMultipleDb.config.safely_yielding_environments.include? Rails.env
             yield
           end
         end
