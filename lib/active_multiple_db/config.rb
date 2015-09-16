@@ -19,4 +19,7 @@ module ActiveMultipleDb
       ["development", "test"]
     end
   end
+
+  # Initialize config
+  configure {}
 end
