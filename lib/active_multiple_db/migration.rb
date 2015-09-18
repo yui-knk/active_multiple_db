@@ -36,9 +36,13 @@ module ActiveMultipleDb
         include Callbacks
 
         def around_migration(&block)
-          connection_class.establish_connection :"#{Rails.env}2"
-          yield
-          connection_class.establish_connection :"#{Rails.env}"
+          if ActiveMultipleDb.config.safely_yielding_environments.include? Rails.env
+            connection_class.establish_connection :"#{Rails.env}2"
+            yield
+            connection_class.establish_connection :"#{Rails.env}"
+          else
+            yield
+          end
         end
       end
     end
